@@ -1,0 +1,22 @@
+{
+  "name": "crackito-web-server",
+  "version": "1.0.0",
+  "description": "Base website for the crackito project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fx074/CRAKITO.git"
+  },
+  "author": "Crackito",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fx074/CRAKITO/issues"
+  },
+  "homepage": "https://github.com/fx074/CRAKITO#readme",
+  "dependencies": {
+    "crypto-js": "^4.1.1"
+  }
+}
