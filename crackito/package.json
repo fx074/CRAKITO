@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "core-js": "^3.8.3",
+    "crypto-js": "^4.1.1",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3"
   },
@@ -42,10 +43,17 @@
       "vuejs-accessibility/label-has-for": [
         "error",
         {
-          "components": ["VLabel"],
-          "controlComponents": ["VInput"],
+          "components": [
+            "VLabel"
+          ],
+          "controlComponents": [
+            "VInput"
+          ],
           "required": {
-            "some": ["nesting", "id"]
+            "some": [
+              "nesting",
+              "id"
+            ]
           },
           "allowChildren": false
         }
