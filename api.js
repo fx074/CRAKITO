@@ -20,8 +20,9 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage })
 
 app.post('/Upload', upload.any(), function(req, res, next){
-    res.send(req.file)
+    res.sendFile(path.join(__dirname, 'test/validation.html'))
 })
+
 
 app.listen(port, () => {
     console.log(`listening on port ${port}`)
