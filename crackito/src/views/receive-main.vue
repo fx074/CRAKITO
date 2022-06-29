@@ -10,7 +10,7 @@
                     <nav>
                       <router-link to="/" class="nav_prim">Accueil </router-link>
                       <router-link to="/upload" class="nav_prim">Envoyer un fichier </router-link>
-                      <router-link to="/receive" class="nav_link">Recevoir un fichier</router-link>
+                      <router-link to="/receive" class="nav_link">Récupérer un fichier</router-link>
                     </nav>
                     <router-view />
                 </div>
