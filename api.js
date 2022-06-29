@@ -22,7 +22,22 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage })
 
 app.post('/upload', upload.any(), function(req, res, next){
-    res.sendFile(path.join(__dirname, 'test/validation.html'))
+    try {
+        if(!req.files) {
+            res.send({
+                status: false,
+                message: 'No file uploaded'
+            });
+        } else {
+            res.send({
+                status: true,
+                message: 'Files are uploaded',
+                data: data
+            });
+        }
+    } catch (err) {
+        res.status(500).send(err);
+    }
 })
 
 app.listen(80, () => {
