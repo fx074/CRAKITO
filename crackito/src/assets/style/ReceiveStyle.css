@@ -183,6 +183,7 @@
     width: 40%;
     padding: 4px;
     transition: .4s background-color;
+    margin-top: 20px;
 }
 
 .send_btn:hover {
