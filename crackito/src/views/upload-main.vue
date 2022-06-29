@@ -35,9 +35,7 @@ export default {
             iterations: 1000,
           },
         );
-        console.log(clee, clee.toString());
         this.ciphered = CryptoJS.AES.encrypt(e.target.result, clee.toString());
-        console.log(salt);
       };
       reader.readAsDataURL(this.file);
     },
