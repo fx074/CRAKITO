@@ -6,6 +6,7 @@
         <input type="file" ref="file" v-on:change="FileUploadOnchange( $event )" />
       </label>
       <button v-on:click="submitForm()">Upload</button>
+      <span id="status"></span>
     </div>
   </div>
 </template>
@@ -25,9 +26,19 @@ export default {
       const reader = new FileReader();
 
       reader.onload = (e) => {
-        this.ciphered = CryptoJS.AES.encrypt(e.target.result, 'TEST');
+        const salt = CryptoJS.lib.WordArray.random(128 / 8);
+        const clee = CryptoJS.PBKDF2(
+          Math.floor(Math.random() * 25555).toString(),
+          salt,
+          {
+            keySize: 256 / 32,
+            iterations: 1000,
+          },
+        );
+        console.log(clee, clee.toString());
+        this.ciphered = CryptoJS.AES.encrypt(e.target.result, clee.toString());
+        console.log(salt);
       };
-      console.log(this.ciphered);
       reader.readAsDataURL(this.file);
     },
   },
