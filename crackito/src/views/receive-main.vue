@@ -12,7 +12,7 @@
                       <router-link to="/upload" class="nav_prim">Envoyer un fichier </router-link>
                       <router-link to="/receive" class="nav_link">Récupérer un fichier</router-link>
                     </nav>
-                    <router-view />
+                    <router-view/>
                 </div>
             </div>
         </div>
@@ -23,8 +23,9 @@
         <p class="sf_des">Un façon simple et sécurisé de partager et récupérer vos fichiers</p>
         <div class="sf_contour">
           <form action="/Upload" method="post" enctype="multipart/form-data" class="sf_form">
-            <div class="sf_button"></div>
-            <label>Boum shakalaka<input type="file" name="TP7"></label>
+            <div class="search-wrapper">
+              <label><input type="text" class="searchbar" placeholder="Entrer le code"/></label>
+            </div>
             <button type="submit">Send</button>
           </form>
         </div>
@@ -34,5 +35,5 @@
 </template>
 
 <style scoped>
-    @import '../assets/style/ReceiveStyle.css';
+    @import '../assets/style/UploadStyle.css';
 </style>
