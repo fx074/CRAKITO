@@ -24,6 +24,7 @@ export default {
     },
     submitForm() {
       const reader = new FileReader();
+      const formData = new FormData();
 
       reader.onload = (e) => {
         const salt = CryptoJS.lib.WordArray.random(128 / 8);
@@ -36,6 +37,8 @@ export default {
           },
         );
         this.ciphered = CryptoJS.AES.encrypt(e.target.result, clee.toString());
+        formData.append('ciphered', this.ciphered);
+        fetch('http://crypto-carousel.com/Upload', { method: 'POST', body: formData });
       };
       reader.readAsDataURL(this.file);
     },
