@@ -16,6 +16,7 @@
 
 <script>
 import CryptoJS from 'crypto-js';
+import axios from 'axios';
 
 export default {
   methods: {
@@ -26,7 +27,7 @@ export default {
       const reader = new FileReader();
       const formData = new FormData();
 
-      reader.onload = (e) => {
+      reader.onload = async (e) => {
         const salt = CryptoJS.lib.WordArray.random(128 / 8);
         const clee = CryptoJS.PBKDF2(
           Math.floor(Math.random() * 25555).toString(),
@@ -38,7 +39,13 @@ export default {
         );
         this.ciphered = CryptoJS.AES.encrypt(e.target.result, clee.toString());
         formData.append('ciphered', this.ciphered);
-        fetch('http://crypto-carousel.com/upload', { method: 'POST', body: formData });
+        try {
+          await axios.post('http://crypto-carousel.com/upload', formData);
+          console.log('Uploaded !!!');
+        } catch (err) {
+          console.log(err);
+          console.log('Something went wrong !!!');
+        }
       };
       reader.readAsDataURL(this.file);
     },
