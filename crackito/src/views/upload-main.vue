@@ -24,7 +24,7 @@
         <div class="sf_contour">
           <form action="/Upload" method="post" enctype="multipart/form-data" class="sf_form">
             <div class="sf_button"></div>
-            <label><input type="file" name="TP7"></label>
+            <label><input type="file" name="TP7" class="sf_file"></label>
             <button type="submit" class="send_btn">Envoyer</button>
           </form>
         </div>

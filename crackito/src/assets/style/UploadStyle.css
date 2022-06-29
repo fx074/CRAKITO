@@ -149,9 +149,15 @@
   width: 56px;
   height: 56px;
   overflow: visible;
-
 }
 
+.sf_file{
+  font-family: 'Nunito', sans-serif;
+  font-weight: 500;
+  font-size: 10px;
+  color: #FFFFFF;
+  margin: auto;
+}
 .send_btn{
   background: rgba(167, 167, 167, 0.68);;
   color:white;
