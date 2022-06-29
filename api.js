@@ -6,7 +6,7 @@ const path = require('path')
 
 const app = express()
 
-const port = 3000;
+const port = 80;
 
 app.get("/",(req,res) => {
     res.sendFile(path.join(__dirname, 'test/test.html'))
@@ -24,6 +24,6 @@ app.post('/Upload', upload.any(), function(req, res, next){
 })
 
 
-app.listen(port, () => {
-    console.log(`listening on port ${port}`)
+app.listen(80, () => {
+    console.log(`http listening on port ${port}`)
 })
