@@ -1,0 +1,191 @@
+/*---------------------------Partie HEADER -------------------------*/
+/*Importation de nouvelles polices d'écriture ------------------------------------------------------*/ 
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+/*Fin Importation des polices d'écriture -------------------------------------------------*/
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+.inner{
+  width: 90%;
+  margin : auto;
+}
+
+.menu{
+  background : white; 
+  display: flex;
+  width: 100%;
+  height: 80px;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+  /*line-height: 0px;*/
+  /*position: fixed;/*Permet le sticky header*/
+  z-index: 10; /*Permet de mettre la barre de navigation à l'avant*/
+  /*box-shadow: 0 8px 8px -4px gray; /*Ombre en dessous du header*/
+  transition: 0.4s; /* Transition pour javascript */
+}
+
+.m_left{
+  float: left;
+  
+}
+
+.m_logo{
+    margin-right : 25px;
+    float: left;
+    max-width: 250px;
+}
+/*
+.m_titre{
+  font-family: 'Nunito', sans-serif;
+  font-size: 40px;
+  color: black;
+  /*text-transform: uppercase; /*Met en Majuscule
+  float: left;
+}*/
+
+.m_right{
+  float: right;
+  letter-spacing: 0.5px; /*Espacement des lettres*/ 
+}
+
+.nav_link, .nav_prim{
+  text-decoration: none; /*Enlève le surlignement des liens*/
+  color: black;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  padding: 0;margin: 0 60px; /*Espace les éléments de la navigation*/
+  /* Animation - Interaction avec la navigation*/ 
+  transition: all 0.3s ease-in-out;/*Animation plus fluide*/
+  border-bottom: 2px solid transparent;
+  
+}
+
+.nav_link{
+  color: #929292 ;
+  background-color:transparent;
+  border: none;
+}
+
+/*Animation lors de l'intéraction de la navigation*/
+.nav_link:hover,.nav_prim:hover{
+  padding-bottom: 10px;
+  border-bottom: 3px solid #6FB8FC;
+}
+
+.header{
+    position: absolute;
+    padding-bottom: 50px;
+}
+
+/*---------------------------Fin partie HEADER -------------------------*/
+.c_container{
+    width: 90%;
+    margin: auto;
+}
+.cover{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.cover_text{
+    position: relative;
+    max-width: 600px;
+    text-align: justify;
+
+}
+.cover_text h1{
+    color: #6FB8FC;
+    font-size:64px ;
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    margin-bottom: 30px;
+
+}
+
+.cover_text h2{
+    color: black;
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.cover_home{
+  margin-top: 60px;
+}
+
+.cover_text p{
+    font-family: 'Nunito', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    color: #000000;
+}
+
+.cover_link{
+    display: inline-block;
+    background-color: #FFC794;;
+    padding: 15px 30px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-family: 'Nunito', sans-serif;
+    color: #FFFFFF;
+    letter-spacing: 1px;
+    margin-top: 70px;
+    font-weight: 600;
+}
+
+.cover_img{
+    width: 850px;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 50px;
+}
+
+.img_cover{
+    max-width: 640px;
+}
+
+
+.circle_1{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+  clip-path: circle(50% at 10% 100px);
+  background: rgba(149, 149, 149, 0.1);
+}
+
+.circle_2{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+  clip-path: circle(200px at right 10px);
+  background: rgba(19, 115, 136, 0.13);
+}
+
+.circle_3{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+  clip-path: ellipse(280px 240px at 50% 1000px);
+  background: rgba(242, 164, 39, 0.25);
+}
