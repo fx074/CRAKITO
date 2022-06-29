@@ -154,13 +154,15 @@
 
 /*---------------------------Partie SearchBar-------------------------*/
 .search-wrapper{
-    width: 50%;
+    width: 70%;
     margin: auto;
-    margin-top: 140px;
+    margin-top: 40px;
+    margin-bottom: 20px;
 }
   
 .searchbar{
     padding: 5px 20px;
+    text-align: center;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     background-color: #FBFBFB;
@@ -168,5 +170,9 @@
     color: #C9C9C9;
     width: 100%;
     border-radius: 8px;
+}
+
+.send_button{
+    
 }
   
