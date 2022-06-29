@@ -3,8 +3,10 @@ const multer = require('multer')
 const req = require("express/lib/request")
 const res = require("express/lib/response")
 const path = require('path')
+var cors = require('cors');
 
 const app = express()
+app.use(cors())
 
 const port = 80;
 
