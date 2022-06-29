@@ -14,22 +14,27 @@
 </style>
 
 <script>
+import CryptoJS from 'crypto-js';
+
 export default {
   methods: {
     FileUploadOnchange() {
       [this.file] = this.$refs.file.files;
     },
     submitForm() {
-      console.log(this.file);
-    }, /*
-    cipherFile() {
-      let reader = new FileReader();
-    }, */
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        this.ciphered = CryptoJS.AES.encrypt(e.target.result, 'TEST');
+      };
+      console.log(this.ciphered);
+      reader.readAsDataURL(this.file);
+    },
   },
   data() {
     return {
-      file: '',
-      result: '',
+      file: null,
+      ciphered: null,
     };
   },
 };
