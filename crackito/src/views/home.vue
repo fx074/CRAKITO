@@ -8,7 +8,7 @@
                 </div>
                 <div class="m_right">
                     <nav>
-                      <router-link to="/" class="nav_prim">Accueil </router-link>
+                      <router-link to="/" class="nav_link">Accueil </router-link>
                       <router-link to="/upload" class="nav_prim">Envoyer un fichier </router-link>
                       <router-link to="/receive" class="nav_prim">Recevoir un fichier </router-link>
                     </nav>
