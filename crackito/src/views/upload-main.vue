@@ -25,7 +25,7 @@
           <form action="/Upload" method="post" enctype="multipart/form-data" class="sf_form">
             <div class="container_file">
               <input type="file" name="TP7" id="file" class="sf_file">
-            <label for="file">Choisir un fichier</label>
+            <label for="file"></label>
             </div>
             <button type="submit" class="send_btn">Envoyer</button>
           </form>

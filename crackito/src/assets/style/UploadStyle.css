@@ -152,35 +152,21 @@
 }
 
 .sf_file{
-  
   margin: auto;
-  overflow: hidden;
-  opacity: 0;
+  /*overflow: hidden;
+  /*opacity: 0;*/
 }
 
-.sf_file + label{
+.sf_file{
   font-family: 'Nunito', sans-serif;
   font-weight: 500;
-  font-size: 15px;
+  font-size: 10px;
   color: black;
   background-color: #FFFFFF;
-  padding: 10px 35px;
+  padding: 10px 10px;
   border-radius: 10px;
 }
 
-.sf_file:focus + label,
-.sf_filefile + label:hover {
-    background-color: #FFC794;
-}
-
-.sf_file + label {
-	cursor: pointer; /* "hand" cursor */
-}
-
-.sf_file:focus + label {
-	outline: 1px dotted #000;
-	outline: -webkit-focus-ring-color auto 5px;
-}
 .send_btn{
   background: rgba(167, 167, 167, 0.68);;
   color:white;
