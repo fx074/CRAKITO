@@ -22,7 +22,7 @@
         <p class="sf_title">Récupérer un fichier</p>
         <p class="sf_des">Un façon simple et sécurisé de partager et récupérer vos fichiers</p>
         <div class="sf_contour">
-          <form action="/Upload" method="post" enctype="multipart/form-data" class="sf_form">
+          <form class="sf_form">
             <div class="search-wrapper">
               <label><input type="text" class="searchbar" placeholder="Entrer le code"/></label>
             </div>

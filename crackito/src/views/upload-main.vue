@@ -23,8 +23,10 @@
         <p class="sf_des">La façon la plus simple et sécurisé d'envoyer vos fichiers</p>
         <div class="sf_contour">
           <form action="/Upload" method="post" enctype="multipart/form-data" class="sf_form">
-            <div class="sf_button"></div>
-            <label><input type="file" name="TP7" class="sf_file"></label>
+            <div class="container_file">
+              <input type="file" name="TP7" id="file" class="sf_file">
+            <label for="file">Choisir un fichier</label>
+            </div>
             <button type="submit" class="send_btn">Envoyer</button>
           </form>
         </div>
