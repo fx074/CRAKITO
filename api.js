@@ -21,7 +21,7 @@ const storage = multer.diskStorage({
 })
 const upload = multer({ storage: storage })
 
-app.post('/Upload', upload.any(), function(req, res, next){
+app.post('/upload', upload.any(), function(req, res, next){
     res.sendFile(path.join(__dirname, 'test/validation.html'))
 })
 
