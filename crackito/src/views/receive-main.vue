@@ -26,7 +26,7 @@
             <div class="search-wrapper">
               <label><input type="text" class="searchbar" placeholder="Entrer le code"/></label>
             </div>
-            <button type="submit">Send</button>
+            <button type="submit" class="send_btn">Chercher</button>
           </form>
         </div>
       </div>
@@ -35,5 +35,5 @@
 </template>
 
 <style scoped>
-    @import '../assets/style/UploadStyle.css';
+    @import '../assets/style/ReceiveStyle.css';
 </style>
