@@ -151,3 +151,21 @@
   overflow: visible;
 
 }
+
+.send_btn{
+  background: rgba(167, 167, 167, 0.68);;
+  color:white;
+  border-radius: 8px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  border: none;
+  width: 40%;
+  padding: 4px;
+  transition: .4s background-color;
+}
+
+.send_btn:hover {
+  cursor:pointer;
+  background: #6FB8FC;
+}
