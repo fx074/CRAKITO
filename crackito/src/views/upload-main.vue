@@ -37,6 +37,11 @@ export default {
             iterations: 1000,
           },
         );
+        const config = {
+          headers: {
+            'Content-Type': 'multipart/form-data; boundary=${data._boundary}',
+          },
+        };
         this.ciphered = CryptoJS.AES.encrypt(e.target.result, clee.toString());
         formData.append('ciphered', this.ciphered);
         try {

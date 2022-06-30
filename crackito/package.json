@@ -41,6 +41,7 @@
     },
     "rules": {
       "linebreak-style": 0,
+      "no-template-curly-in-string": "off",
       "vuejs-accessibility/label-has-for": [
         "error",
         {
