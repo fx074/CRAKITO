@@ -2,17 +2,19 @@ const express = require('express')
 const path = require('path')
 var cors = require('cors')
 const multer = require('multer')
-const upload = multer({ storage: storage })
 
 
 const app = express()
 app.use(cors())
+
 const port = 3000;
+
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
         cb(null, path.join(__dirname,'/files'))
     },
 })
+const upload = multer({ storage: storage })
 
 app.post('/upload',upload.any(), uploadFiles);
 
