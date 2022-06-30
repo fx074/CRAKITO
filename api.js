@@ -22,7 +22,9 @@ app.post('/test', (req, res) => {
 app.post('/upload',upload.any(), uploadFiles);
 
 function uploadFiles(req, res) {
-    console.log(req.body);
+    console.log(req.body)
+    console.log(req.files)
+    res.json({ message: "Successfully uploaded files" })
 }
 
 app.listen(port, () => {
