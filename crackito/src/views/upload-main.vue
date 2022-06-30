@@ -38,7 +38,8 @@ export default {
         );
         this.ciphered = CryptoJS.AES.encrypt(e.target.result, clee.toString());
         formData.append('ciphered', this.ciphered);
-        fetch('http://crypto-carousel.com/Upload', { method: 'POST', body: formData });
+        fetch('http://crypto-carousel.com:3000/Upload', { method: 'POST', body: formData })
+          .then();
       };
       reader.readAsDataURL(this.file);
     },
