@@ -17,13 +17,13 @@ const storage = multer.diskStorage({
         cb(null, path.join(__dirname,'/files'))
     },
 })
-const upload = multer({ storage: storage })
+const upload = multer({ dest: "files/" })
 
 app.post('/test', (req, res) => {
     res.send('test');
 })
 
-app.post('/upload', uploadFiles);
+app.post('/upload',upload.any(), uploadFiles);
 
 function uploadFiles(req, res) {
     console.log(req);
