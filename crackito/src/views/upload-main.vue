@@ -38,19 +38,16 @@ export default {
         );
         this.ciphered = CryptoJS.AES.encrypt(e.target.result, clee.toString());
         formData.append('ciphered', this.ciphered);
-        try {
-          console.log(formData);
-          fetch('http://crypto-carousel.com:3000/upload', {
-            method: 'POST',
-            body: 'test',
-            headers: {
-              'Content-Type': 'multipart/form-data',
-            },
-          });
-        } catch (err) {
-          console.log(err);
-          console.log('Something went wrong !!!');
-        }
+        console.log(formData);
+        fetch('http://crypto-carousel.com:3000/upload', {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Content-Type': 'multipart/form-data; boundary="----arbitrary boundary',
+          },
+        })
+          .then((res) => console.log(res))
+          .catch(() => ('Error occured'));
       };
       reader.readAsDataURL(this.file);
     },
