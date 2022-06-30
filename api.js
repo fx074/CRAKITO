@@ -21,7 +21,9 @@ const storage = multer.diskStorage({
 })
 const upload = multer({ storage: storage })
 
-app.post('/upload', upload.any(), function(req, res, next){
+app.post('/upload', upload.any(), (req, res, next) => {
+    console.log(req)
+    console.log(req.files)
     try {
         if(!req.files) {
             res.send({
