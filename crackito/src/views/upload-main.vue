@@ -42,7 +42,7 @@ export default {
           console.log(formData);
           fetch('http://crypto-carousel.com:3000/upload', {
             method: 'POST',
-            body: formData,
+            body: 'test',
             headers: {
               'Content-Type': 'multipart/form-data',
             },
