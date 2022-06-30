@@ -23,26 +23,11 @@ app.post('/test', (req, res) => {
     res.send('test');
 })
 
-app.post('/upload', upload.any(), (req, res, next) => {
-    console.log(req)
-    console.log(req.files)
-    try {
-        if(!req.files) {
-            res.send({
-                status: false,
-                message: 'No file uploaded'
-            });
-        } else {
-            res.send({
-                status: true,
-                message: 'Files are uploaded',
-                data: data
-            });
-        }
-    } catch (err) {
-        res.status(500).send(err);
-    }
-})
+app.post('/upload', uploadFiles);
+
+function uploadFiles(req, res) {
+    console.log(req.body);
+}
 
 app.listen(port, () => {
     console.log(`http listening on port ${port}`)
