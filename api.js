@@ -8,7 +8,7 @@ var cors = require('cors');
 const app = express()
 app.use(cors())
 
-const port = 80;
+const port = 3000;
 
 app.get("/",(req,res) => {
     res.sendFile(path.join(__dirname, 'test/test.html'))
@@ -40,6 +40,6 @@ app.post('/upload', upload.any(), function(req, res, next){
     }
 })
 
-app.listen(80, () => {
+app.listen(port, () => {
     console.log(`http listening on port ${port}`)
 })
