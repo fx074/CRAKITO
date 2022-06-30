@@ -1,14 +1,12 @@
 const express = require('express')
 const multer = require('multer')
-const req = require("express/lib/request")
-const res = require("express/lib/response")
 const path = require('path')
 var cors = require('cors');
 
 const app = express()
 app.use(cors())
 
-const port = 80;
+const port = 3000;
 
 app.get("/",(req,res) => {
     res.sendFile(path.join(__dirname, 'test/test.html'))
@@ -20,6 +18,10 @@ const storage = multer.diskStorage({
     },
 })
 const upload = multer({ storage: storage })
+
+app.post('/test', (req, res) => {
+    res.send('test');
+})
 
 app.post('/upload', upload.any(), (req, res, next) => {
     console.log(req)
@@ -42,6 +44,6 @@ app.post('/upload', upload.any(), (req, res, next) => {
     }
 })
 
-app.listen(80, () => {
+app.listen(port, () => {
     console.log(`http listening on port ${port}`)
 })
