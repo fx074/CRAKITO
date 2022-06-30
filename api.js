@@ -8,10 +8,6 @@ app.use(cors())
 
 const port = 3000;
 
-app.get("/",(req,res) => {
-    res.sendFile(path.join(__dirname, 'test/test.html'))
-});
-
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
         cb(null, path.join(__dirname,'/files'))
@@ -26,7 +22,7 @@ app.post('/test', (req, res) => {
 app.post('/upload',upload.any(), uploadFiles);
 
 function uploadFiles(req, res) {
-    console.log(req);
+    console.log(req.body);
 }
 
 app.listen(port, () => {
