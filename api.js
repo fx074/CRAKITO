@@ -1,7 +1,5 @@
 const express = require('express')
 const multer = require('multer')
-const req = require("express/lib/request")
-const res = require("express/lib/response")
 const path = require('path')
 var cors = require('cors');
 
