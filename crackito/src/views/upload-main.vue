@@ -39,14 +39,14 @@ export default {
         );
         const config = {
           headers: {
-            'Content-Type': 'multipart/form-data;',
+            'Content-Type': 'multipart/form-data; boundary=${data._boundary}',
           },
         };
         this.ciphered = CryptoJS.AES.encrypt(e.target.result, clee.toString());
         formData.append('ciphered', this.ciphered);
         try {
           console.log(formData);
-          await axios.post('http://crypto-carousel.com:3000/upload', formData[0], config);
+          await axios.post('http://crypto-carousel.com:3000/upload', formData, config);
         } catch (err) {
           console.log(err);
           console.log('Something went wrong !!!');
