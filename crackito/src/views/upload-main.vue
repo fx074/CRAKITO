@@ -43,7 +43,7 @@ export default {
           method: 'POST',
           body: formData,
           headers: {
-            'Content-Type': 'multipart/form-data; boundary="----arbitrary boundary',
+            'Content-Type': 'multipart/form-data; boundary=----arbitrary boundary',
           },
         })
           .then((res) => console.log(res))
