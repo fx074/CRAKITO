@@ -16,6 +16,7 @@
 
 <script>
 import CryptoJS from 'crypto-js';
+import axios from 'axios';
 
 export default {
   methods: {
@@ -36,18 +37,15 @@ export default {
             iterations: 1000,
           },
         );
+        const config = {
+          headers: {
+            ...formData.getHeaders(),
+          },
+        };
         this.ciphered = CryptoJS.AES.encrypt(e.target.result, clee.toString());
         formData.append('ciphered', this.ciphered);
         console.log(formData);
-        fetch('http://crypto-carousel.com:3000/upload', {
-          method: 'POST',
-          body: formData,
-          headers: {
-            'Content-Type': 'multipart/form-data; boundary=----arbitrary boundary',
-          },
-        })
-          .then((res) => console.log(res))
-          .catch(() => ('Error occured'));
+        axios.post('http://crypto-carousel.com:3000/upload', formData, config);
       };
       reader.readAsDataURL(this.file);
     },
