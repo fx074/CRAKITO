@@ -16,7 +16,6 @@
 
 <script>
 import CryptoJS from 'crypto-js';
-import axios from 'axios';
 
 export default {
   methods: {
@@ -25,27 +24,37 @@ export default {
     },
     submitForm() {
       const reader = new FileReader();
-      const formData = new FormData();
+      const salt = CryptoJS.lib.WordArray.random(128 / 8);
+      const clee = CryptoJS.PBKDF2(
+        Math.floor(Math.random() * 25555).toString(),
+        salt,
+        {
+          keySize: 256 / 32,
+          iterations: 1000,
+        },
+      );
 
       reader.onload = async (e) => {
-        const salt = CryptoJS.lib.WordArray.random(128 / 8);
-        const clee = CryptoJS.PBKDF2(
-          Math.floor(Math.random() * 25555).toString(),
-          salt,
+        // eslint-disable-next-line
+        this.ciphered = CryptoJS.AES.encrypt(e.target.result, clee.toString());
+        console.log(this.ciphered);
+        /* console.log(this.file);
+        console.log(this.ciphered.ciphertext.toString());
+        this.deciphered = CryptoJS.AES.decrypt(
+          this.ciphered,
+          clee.toString(),
+        );
+        console.log(this.deciphered.toString(CryptoJS.enc.Latin1)); */
+        fetch(
+          'http://crypto-carousel.com:3000/upload',
           {
-            keySize: 256 / 32,
-            iterations: 1000,
+            method: 'POST',
+            headers: {
+              'content-type': 'application/octet-stream',
+            },
+            body: this.ciphered,
           },
         );
-        const config = {
-          headers: {
-            ...formData.getHeaders(),
-          },
-        };
-        this.ciphered = CryptoJS.AES.encrypt(e.target.result, clee.toString());
-        formData.append('ciphered', this.ciphered);
-        console.log(formData);
-        axios.post('http://crypto-carousel.com:3000/upload', formData, config);
       };
       reader.readAsDataURL(this.file);
     },
@@ -54,6 +63,7 @@ export default {
     return {
       file: null,
       ciphered: null,
+      deciphered: null,
     };
   },
 };
