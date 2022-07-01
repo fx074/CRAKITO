@@ -24,7 +24,7 @@ app.post('/test', (req, res) => {
 app.post('/upload',upload.any(), uploadFiles);
 
 function uploadFiles(req, res) {
-    console.log(req)
+    console.log(req.body)
     res.json({ message: "Successfully uploaded files" })
 }
 
