@@ -16,7 +16,7 @@ const storage = multer.diskStorage({
     },
     filename: function(req, file, cb) {
         console.log(file.fieldname);
-        cb(file.fieldname);
+        cb(file.fieldname + ".encr");
     },
 })
 const upload = multer({ storage: storage })
