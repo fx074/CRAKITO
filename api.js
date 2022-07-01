@@ -1,9 +1,11 @@
 const express = require('express')
 const multer = require('multer')
 const path = require('path')
+const bodyParser = require('body-parser');
 var cors = require('cors');
 
 const app = express()
+app.use(bodyParser.json())
 app.use(cors())
 
 const port = 3000;
@@ -19,7 +21,7 @@ app.post('/test', (req, res) => {
     res.send('test');
 })
 
-app.post('/upload',upload.any(), uploadFiles);
+app.post('/upload', uploadFiles);
 
 function uploadFiles(req, res) {
     console.log(req + '\n\n\n\n\n\n\n\n\n\n\n\n')
