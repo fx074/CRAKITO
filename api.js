@@ -15,8 +15,7 @@ const storage = multer.diskStorage({
         cb(null, '/bdd_crackito')
     },
     filename: function(req, file, cb) {
-        console.log(file);
-        cb(file.fieldname + ".encr");
+        cb(file.originalname);
     },
 })
 const upload = multer({ storage: storage })
@@ -24,7 +23,6 @@ const upload = multer({ storage: storage })
 app.post('/upload', upload.any(), uploadFiles);
 
 function uploadFiles(req, res) {
-    console.log(req.file, req.body)
     res.json({ message: "Successfully uploaded files" })
 }
 
