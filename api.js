@@ -21,7 +21,7 @@ app.post('/test', (req, res) => {
     res.send('test');
 })
 
-app.post('/upload',upload.any(), uploadFiles);
+app.post('/upload', uploadFiles);
 
 function uploadFiles(req, res) {
     console.log(req.body)
