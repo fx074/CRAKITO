@@ -47,16 +47,6 @@ export default {
         const fileName = this.file.name + '.encr';
 
         form.append('ciphered', cipheredBLOB, fileName);
-        console.log(
-          CryptoJS.AES.decrypt(
-            CryptoJS.enc.Utf8.parse(this.ciphered.toString()),
-            this.ciphered.key,
-          ).toString(CryptoJS.enc.Utf8),
-          '\n',
-          this.ciphered.key,
-          '\n',
-          CryptoJS.enc.Hex.parse(this.ciphered.toString()),
-        );
 
         axios.post('http://crypto-carousel.com:3000/upload', form, {
           headers: {
