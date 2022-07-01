@@ -1,9 +1,11 @@
 const express = require('express')
 const multer = require('multer')
 const path = require('path')
+const bodyParser = require('body-parser');
 var cors = require('cors');
 
 const app = express()
+app.use(bodyParser.json())
 app.use(cors())
 
 const port = 3000;
