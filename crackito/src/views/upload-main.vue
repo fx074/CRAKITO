@@ -15,12 +15,9 @@
 </style>
 
 <script>
-import Vue from 'vue';
 import CryptoJS from 'crypto-js';
+import FormData from 'form-data';
 import axios from 'axios';
-import vueaxios from 'vue-axios';
-
-Vue.use(vueaxios, axios);
 
 export default {
   methods: {
@@ -40,25 +37,28 @@ export default {
       );
 
       reader.onload = async (e) => {
+        this.ciphered = CryptoJS.AES.encrypt(e.target.result, clee.toString()).toString();
+        const cipheredBLOB = new Blob([this.ciphered], {
+          type: 'text/plain',
+        });
+
+        const form = new FormData();
         // eslint-disable-next-line
-        this.ciphered = CryptoJS.AES.encrypt(e.target.result, clee.toString());
-        console.log(this.ciphered);
-        /* console.log(this.file);
-        console.log(this.ciphered.ciphertext.toString());
-        this.deciphered = CryptoJS.AES.decrypt(
-          this.ciphered,
-          clee.toString(),
-        );
-        console.log(this.deciphered.toString(CryptoJS.enc.Latin1)); */
-        this.$http.post(
-          'http://crypto-carousel.com:3000/upload',
-          this.ciphered,
-          {
-            headers: {
-              ContentType: 'application/octet-stream',
-            },
+        const fileName = this.file.name + '.encr';
+        form.append('ciphered', cipheredBLOB, fileName);
+        console.log(form);
+
+        axios.post('http://crypto-carousel.com:3000/upload', form, {
+          headers: {
+            ContentType: 'multipart/form-data',
           },
-        );
+        })
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       };
       reader.readAsDataURL(this.file);
     },
