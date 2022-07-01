@@ -37,16 +37,26 @@ export default {
       );
 
       reader.onload = async (e) => {
-        this.ciphered = CryptoJS.AES.encrypt(e.target.result, clee.toString()).toString();
-        const cipheredBLOB = new Blob([this.ciphered], {
+        this.ciphered = CryptoJS.AES.encrypt(e.target.result, clee.toString());
+
+        const cipheredBLOB = new Blob([this.ciphered.toString()], {
           type: 'text/plain',
         });
-
         const form = new FormData();
         // eslint-disable-next-line
         const fileName = this.file.name + '.encr';
+
         form.append('ciphered', cipheredBLOB, fileName);
-        console.log(form);
+        console.log(
+          CryptoJS.AES.decrypt(
+            CryptoJS.enc.Utf8.parse(this.ciphered.toString()),
+            this.ciphered.key,
+          ).toString(CryptoJS.enc.Utf8),
+          '\n',
+          this.ciphered.key,
+          '\n',
+          CryptoJS.enc.Hex.parse(this.ciphered.toString()),
+        );
 
         axios.post('http://crypto-carousel.com:3000/upload', form, {
           headers: {
