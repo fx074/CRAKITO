@@ -15,7 +15,12 @@
 </style>
 
 <script>
+import Vue from 'vue';
 import CryptoJS from 'crypto-js';
+import axios from 'axios';
+import vueaxios from 'vue-axios';
+
+Vue.use(vueaxios, axios);
 
 export default {
   methods: {
@@ -45,19 +50,15 @@ export default {
           clee.toString(),
         );
         console.log(this.deciphered.toString(CryptoJS.enc.Latin1)); */
-        fetch(
+        this.$http.post(
           'http://crypto-carousel.com:3000/upload',
+          this.ciphered,
           {
-            method: 'POST',
-            mode: 'cors',
             headers: {
-              'content-type': 'application/octet-stream',
+              ContentType: 'application/octet-stream',
             },
-            body: this.ciphered,
           },
-        )
-          .then((response) => (response.json))
-          .then((data) => (console.log(data)));
+        );
       };
       reader.readAsDataURL(this.file);
     },
