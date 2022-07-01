@@ -49,12 +49,15 @@ export default {
           'http://crypto-carousel.com:3000/upload',
           {
             method: 'POST',
+            mode: 'cors',
             headers: {
               'content-type': 'application/octet-stream',
             },
             body: this.ciphered,
           },
-        );
+        )
+          .then((response) => (response.json))
+          .then((data) => (console.log(data)));
       };
       reader.readAsDataURL(this.file);
     },
