@@ -10,12 +10,14 @@ app.use(cors())
 
 const port = 3000;
 
+const date = Date.now();
+
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
         cb(null, '/bdd_crackito')
     },
     filename: function(req, file, cb) {
-        cb(null, file.originalname);
+        cb(null, file.originalname + date);
     },
 })
 const upload = multer({ storage: storage })
