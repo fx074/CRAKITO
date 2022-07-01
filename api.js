@@ -21,11 +21,10 @@ app.post('/test', (req, res) => {
     res.send('test');
 })
 
-app.post('/upload', uploadFiles);
+app.post('/upload', upload, uploadFiles);
 
 function uploadFiles(req, res) {
-    console.log(req + '\n\n\n\n\n\n\n\n\n\n\n\n')
-    console.log(req.data)
+    console.log(req.toString() + '\n\n')
     res.json({ message: "Successfully uploaded files" })
 }
 
