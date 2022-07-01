@@ -12,12 +12,12 @@ const port = 3000;
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
-        cb(null, path.join(__dirname,'/files'))
-    },
+        cb(null, '/bdd_crackito')
+    },/* 
     filename: function(req, file, cb) {
         console.log(file.fieldname);
         cb(file.fieldname + ".encr");
-    },
+    }, */
 })
 const upload = multer({ storage: storage })
 
