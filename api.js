@@ -9,15 +9,18 @@ app.use(bodyParser.json())
 app.use(cors())
 
 const port = 3000;
-
-const date = Date.now();
+const ref = null;
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
         cb(null, '/bdd_crackito')
     },
     filename: function(req, file, cb) {
-        cb(null, file.originalname + date);
+        const date = Date.now()
+        const filename = file.originalname + date
+        
+        addDataBase(filename);
+        cb(null, filename);
     },
 })
 const upload = multer({ storage: storage })
@@ -25,7 +28,16 @@ const upload = multer({ storage: storage })
 app.post('/upload', upload.any(), uploadFiles);
 
 function uploadFiles(req, res) {
-    res.json({ message: "Successfully uploaded files" })
+    res.json(
+    { 
+        message: "Successfully uploaded files",
+        ref: ref.toString(),
+    })
+}
+
+addDataBase(filename){
+
+    
 }
 
 app.listen(port, () => {
