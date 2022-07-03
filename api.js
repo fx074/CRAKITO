@@ -31,7 +31,7 @@ function uploadFiles(req, res) {
     res.json(
     { 
         message: "Successfully uploaded files",
-        ref: ref.toString(),
+        ref: "2",
     })
 }
 
