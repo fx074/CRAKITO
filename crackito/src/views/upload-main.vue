@@ -69,7 +69,7 @@ export default {
           .then((res) => {
             console.log(res);
             // eslint-disable-next-line
-            this.response_p = 'Votre clé unique est : ' + res.refs + clee;
+            this.response_p = 'Votre clé unique est : ' + res.data.ref + 'ca' + clee;
           })
           .catch((err) => {
             console.log(err);
