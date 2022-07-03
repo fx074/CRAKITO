@@ -11,6 +11,7 @@
     "core-js": "^3.8.3",
     "mariadb": "^3.0.0",
     "sequelize": "^6.21.2",
+    "crypto-js": "^4.1.1",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3"
   },
@@ -39,7 +40,27 @@
     "parserOptions": {
       "parser": "@babel/eslint-parser"
     },
-    "rules": {}
+    "rules": {
+      "linebreak-style": 0,
+      "vuejs-accessibility/label-has-for": [
+        "error",
+        {
+          "components": [
+            "VLabel"
+          ],
+          "controlComponents": [
+            "VInput"
+          ],
+          "required": {
+            "some": [
+              "nesting",
+              "id"
+            ]
+          },
+          "allowChildren": false
+        }
+      ]
+    }
   },
   "browserslist": [
     "> 1%",
