@@ -35,9 +35,8 @@ function uploadFiles(req, res) {
     })
 }
 
-addDataBase(filename){
-
-    
+function addDataBase(filename){
+    return filename
 }
 
 app.listen(port, () => {
