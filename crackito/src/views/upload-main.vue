@@ -25,14 +25,15 @@
           <div class="sf_form">
             <label>File
               <div class="container_file">
-                <input type="file" ref="file" v-on:change="FileUploadOnchange( $event )" class="sf_file" />
+                <input type="file" ref="file" v-on:change="FileUploadOnchange( $event )"
+                class="sf_file"/>
               </div>
             </label>
             <button v-on:click="submitForm()">Upload</button>
             <span id="status"></span>
           </div>
-          <p>{{response_p}}</p>
         </div>
+        <p>{{response_p}}</p>
       </div>
     </div>
   </div>
@@ -46,6 +47,7 @@
 import CryptoJS from 'crypto-js';
 import FormData from 'form-data';
 import axios from 'axios';
+
 export default {
   methods: {
     FileUploadOnchange() {
