@@ -8,6 +8,9 @@
       <button v-on:click="submitForm()">Upload</button>
       <span id="status"></span>
     </div>
+    <div>
+      <p>{{response_p}}</p>
+    </div>
   </div>
 </template>
 
@@ -34,20 +37,20 @@ export default {
           keySize: 256 / 32,
           iterations: 1000,
         },
-      );
+      ).toString();
 
       reader.onload = async (e) => {
         this.ciphered = CryptoJS.AES.encrypt(
           e.target.result,
-          CryptoJS.enc.Utf8.parse(clee.toString()),
+          CryptoJS.enc.Utf8.parse(clee),
           { mode: CryptoJS.mode.ECB },
         );
 
-        console.log(CryptoJS.AES.decrypt(
+        /* console.log(CryptoJS.AES.decrypt(
           this.ciphered.toString(),
-          CryptoJS.enc.Utf8.parse(clee.toString()),
+          CryptoJS.enc.Utf8.parse(clee),
           { mode: CryptoJS.mode.ECB },
-        ).toString(CryptoJS.enc.Utf8));
+        ).toString(CryptoJS.enc.Utf8)); */
 
         const cipheredBLOB = new Blob([this.ciphered.toString()], {
           type: 'text/plain',
@@ -56,21 +59,28 @@ export default {
         // eslint-disable-next-line
         const fileName = this.file.name + '.encr';
 
-        form.append('ciphered', cipheredBLOB, fileName);
+        form.append('ciphered', cipheredBLOB, fileName.replace(/\s/g, ''));
 
         axios.post('http://crypto-carousel.com:3000/upload', form, {
           headers: {
             ContentType: 'multipart/form-data',
           },
-        });/*
+        })
           .then((res) => {
             console.log(res);
+            // eslint-disable-next-line
+            this.response_p = 'Votre clé unique est : ' + res.refs + clee;
           })
           .catch((err) => {
             console.log(err);
-          }); */
+            this.response_p = 'Il y a une erreur';
+          });
       };
-      reader.readAsDataURL(this.file);
+      try {
+        reader.readAsDataURL(this.file);
+      } catch (err) {
+        this.response_p = 'Merci de mettre un fichier';
+      }
     },
   },
   data() {
@@ -78,6 +88,7 @@ export default {
       file: null,
       ciphered: null,
       deciphered: null,
+      response_p: null,
     };
   },
 };
