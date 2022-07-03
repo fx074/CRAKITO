@@ -1,27 +1,51 @@
 <template>
-  <h1>File Upload !</h1>
-  <div class="container">
-    <div>
-      <label>File
-        <input type="file" ref="file" v-on:change="FileUploadOnchange( $event )" />
-      </label>
-      <button v-on:click="submitForm()">Upload</button>
-      <span id="status"></span>
-    </div>
-    <div>
-      <p>{{response_p}}</p>
+  <div>
+        <header>
+        <div class="menu">
+            <div class="inner">
+                <div class="m_left">
+                    <img src="../assets/logo_titre.png" alt="Le logo du site" class="m_logo" >
+                </div>
+                <div class="m_right">
+                    <nav>
+                      <router-link to="/" class="nav_prim">Accueil </router-link>
+                      <router-link to="/upload" class="nav_link">Envoyer un fichier </router-link>
+                      <router-link to="/receive" class="nav_prim">Récupérer un fichier</router-link>
+                    </nav>
+                    <router-view />
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container_sf">
+      <div class="send_file">
+        <p class="sf_title">Envoyer un fichier</p>
+        <p class="sf_des">La façon la plus simple et sécurisé d'envoyer vos fichiers</p>
+        <div class="sf_contour">
+          <div class="sf_form">
+            <label>File
+              <div class="container_file">
+                <input type="file" ref="file" v-on:change="FileUploadOnchange( $event )" class="sf_file" />
+              </div>
+            </label>
+            <button v-on:click="submitForm()">Upload</button>
+            <span id="status"></span>
+          </div>
+          <p>{{response_p}}</p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
-<style>
+<style scoped>
+    @import '../assets/style/UploadStyle.css';
 </style>
 
 <script>
 import CryptoJS from 'crypto-js';
 import FormData from 'form-data';
 import axios from 'axios';
-
 export default {
   methods: {
     FileUploadOnchange() {
