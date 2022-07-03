@@ -1,15 +1,56 @@
 const express = require('express')
 const multer = require('multer')
 const path = require('path')
+const { Sequelize } = require('sequelize');
 const bodyParser = require('body-parser');
 var cors = require('cors');
+const { randomInt } = require('crypto');
+
+const sequelize = new Sequelize('Crackito', 'root', 'crackito2022',{
+    host: 'localhost',
+    dialect: 'mariadb',
+});
+
+// INIT SEQUELIZE
+sequelize.sync()
+
+const File = sequelize.define(
+    'File', {
+        ref: {
+            type: Sequelize.INTEGER(10),
+            primaryKey: true,
+        },
+        path: {
+            type: Sequelize.STRING(255),
+            allowNull: false,
+        },
+        IP: {
+            type: Sequelize.INTEGER(4).UNSIGNED,
+        }
+    }
+)
+const F_Key = sequelize.define(
+    'F_Key', {
+        ref: {
+            type: Sequelize.INTEGER(15),
+            references: {
+                model: File,
+                key: 'ref'
+            }
+        },
+        F_Hash: {
+            type: Sequelize.STRING(255),
+            allowNull: false,
+        }
+    }
+)
 
 const app = express()
 app.use(bodyParser.json())
-app.use(cors())
+app.use(cors()) 
 
 const port = 3000;
-const ref = null;
+let g_ref = null;
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
@@ -18,8 +59,8 @@ const storage = multer.diskStorage({
     filename: function(req, file, cb) {
         const date = Date.now()
         const filename = file.originalname + date
-        
-        addDataBase(filename);
+        createUniqueRef()
+        insertDB(filename);
         cb(null, filename);
     },
 })
@@ -31,12 +72,23 @@ function uploadFiles(req, res) {
     res.json(
     { 
         message: "Successfully uploaded files",
-        ref: "2",
+        ref: g_ref,
     })
 }
 
-function addDataBase(filename){
-    return filename
+function insertDB(filename){
+    File.create({ref: g_ref, path: '/bdd_crackito/'+filename})
+}
+
+async function createUniqueRef(){
+    let exists = 1
+    do{
+        g_ref = randomInt(2**32)
+        exists = await File.findAll({
+            attributes: ['ref'],
+            where: ref = g_ref,
+        })
+    }while(!exists)
 }
 
 app.listen(port, () => {
