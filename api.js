@@ -68,6 +68,17 @@ const upload = multer({ storage: storage })
 
 app.post('/upload', upload.any(), uploadFiles);
 
+app.get('/download/file/:ref', dlFiles);
+
+function dlFiles(req, res) {
+    console.log(req.param.ref)
+    res.sendJSON(
+    {
+        file: "file",
+        filename: "test.test"
+    })
+}
+
 function uploadFiles(req, res) {
     res.json(
     { 
