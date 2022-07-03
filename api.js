@@ -71,7 +71,7 @@ app.post('/upload', upload.any(), uploadFiles);
 app.get('/download/file/:ref', dlFiles);
 
 function dlFiles(req, res) {
-    console.log(req.param.ref)
+    console.log(req.params.ref)
     res.json(
     {
         file: "file",
