@@ -37,7 +37,17 @@ export default {
       );
 
       reader.onload = async (e) => {
-        this.ciphered = CryptoJS.AES.encrypt(e.target.result, clee.toString());
+        this.ciphered = CryptoJS.AES.encrypt(
+          e.target.result,
+          CryptoJS.enc.Utf8.parse(clee.toString()),
+          { mode: CryptoJS.mode.ECB },
+        );
+
+        console.log(CryptoJS.AES.decrypt(
+          this.ciphered.toString(),
+          CryptoJS.enc.Utf8.parse(clee.toString()),
+          { mode: CryptoJS.mode.ECB },
+        ).toString(CryptoJS.enc.Utf8));
 
         const cipheredBLOB = new Blob([this.ciphered.toString()], {
           type: 'text/plain',
@@ -52,13 +62,13 @@ export default {
           headers: {
             ContentType: 'multipart/form-data',
           },
-        })
+        });/*
           .then((res) => {
             console.log(res);
           })
           .catch((err) => {
             console.log(err);
-          });
+          }); */
       };
       reader.readAsDataURL(this.file);
     },
