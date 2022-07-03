@@ -72,10 +72,10 @@ app.get('/download/file/:ref', dlFiles);
 
 function dlFiles(req, res) {
     console.log(req.param.ref)
-    res.sendJSON(
+    res.json(
     {
         file: "file",
-        filename: "test.test"
+        filename: "test.test",
     })
 }
 
