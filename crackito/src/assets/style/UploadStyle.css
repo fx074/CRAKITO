@@ -187,3 +187,12 @@
   background: #6FB8FC;
 }
 
+.sf_status{
+  font-size: 15px ;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  padding-top: 10px;
+  text-align: center;
+  color: #FFC794;
+  margin: auto;
+}

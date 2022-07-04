@@ -30,7 +30,7 @@
           </div>
           <button v-on:click="receiveForm()" class="send_btn">Chercher</button>
         </div>
-        <p>{{response_p}}</p>
+        <p class="sf_status">{{response_p}}</p>
         <a href="" ref="link_dl" class="send_btn" style="visibility: hidden;">Download !</a>
         </div>
       </div>

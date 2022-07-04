@@ -184,10 +184,21 @@
     width: 40%;
     padding: 4px;
     transition: .4s background-color;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .send_btn:hover {
     cursor:pointer;
     background: #6FB8FC;
+}
+
+.sf_status{
+  font-size: 15px ;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  padding-top: 20px;
+  margin-top: 20px;
+  text-align: center;
+  color: #FFC794;
+  margin: auto;
 }

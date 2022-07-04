@@ -33,7 +33,7 @@
             <span id="status"></span>
           </div>
         </div>
-        <p>{{response_p}}</p>
+        <p class="sf_status">{{response_p}}</p>
       </div>
     </div>
   </div>
