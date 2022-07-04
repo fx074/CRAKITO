@@ -185,6 +185,7 @@
     padding: 4px;
     transition: .4s background-color;
     margin-top: 10px;
+    text-decoration: none;
 }
 
 .send_btn:hover {
