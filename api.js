@@ -83,7 +83,6 @@ async function dlFiles(req, res) {
         },
     })
     if(!exists.length){
-        res.send("coucou")
         res.json(
         {
             file: null,
@@ -110,7 +109,8 @@ async function dlFiles(req, res) {
                         filename: null,
                         errorHandler: 10,
                         errorDesc: err,
-                    })
+                    }
+                )
             } 
             res.json(
                 {
@@ -118,7 +118,8 @@ async function dlFiles(req, res) {
                     filename: fileName_dl,
                     errorHandler: 9,
                     errorDesc: null,
-                })
+                }
+            )
         })
     }
 }
