@@ -22,19 +22,19 @@
         <p class="sf_title">Récupérer un fichier</p>
         <p class="sf_des">Un façon simple et sécurisé de partager et récupérer vos fichiers</p>
         <div class="sf_contour">
-        <div class="sf_form">
-          <div class="search-wrapper">
-            <label>
-              <input type="text" class="searchbar" placeholder="Entrer le code" ref="code" />
-            </label>
+          <div class="sf_form">
+            <div class="search-wrapper">
+              <label>
+                <input type="text" class="searchbar" placeholder="Entrer le code" ref="code" />
+              </label>
+            </div>
+            <button v-on:click="receiveForm()" class="send_btn">Chercher</button>
           </div>
-          <button v-on:click="receiveForm()" class="send_btn">Chercher</button>
         </div>
         <p class="sf_status">{{response_p}}</p>
         <a href="" ref="link_dl" class="send_btn" style="visibility: hidden;">Download !</a>
         </div>
       </div>
-    </div>
   </div>
 </template>
 
