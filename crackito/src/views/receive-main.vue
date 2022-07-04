@@ -28,6 +28,7 @@
             </label>
           </div>
           <button v-on:click="receiveForm()" class="send_btn">Chercher</button>
+          <p>{{response_p}}</p>
           <a href="" ref="link_dl" class="send_btn" style="visibility: hidden;">Download !</a>
         </div>
       </div>
@@ -62,10 +63,11 @@ export default {
           this.$refs.link_dl.setAttribute('href', decipher);
           this.$refs.link_dl.setAttribute('download', res.data.filename.replace('.encr', ''));
           this.$refs.link_dl.setAttribute('style', 'visibility: show;');
+          this.response_p = 'Fichier disponible !!';
         })
         .catch((err) => {
           console.log(err);
-          this.response_p = 'Il y a une erreur';
+          this.response_p = 'Il y a une erreur, le fichier n\'existe pas';
         });
     },
   },
