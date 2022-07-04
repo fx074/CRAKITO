@@ -78,6 +78,7 @@ async function dlFiles(req, res) {
         where: ref = ref,
     })
     if(!exists.length){
+        res.send("coucou")
         res.json(
         {
             file: null,
@@ -86,6 +87,7 @@ async function dlFiles(req, res) {
             errorDesc: 'Aucun fichier à cette adresse'
         })
     } else {
+        res.send("TEST")
         const path_dl = file[0].dataValues.path
         const fileName_dl = file[0].dataValues.path.split('ito/').pop().split('.encr')[0]+'.encr'
         let file = await File.findAll({
