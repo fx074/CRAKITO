@@ -23,7 +23,7 @@
         <p class="sf_des">La façon la plus simple et sécurisé d'envoyer vos fichiers</p>
         <div class="sf_contour">
           <div class="sf_form">
-            <label>File
+            <label>
               <div class="container_file">
                 <input type="file" ref="file" v-on:change="FileUploadOnchange( $event )"
                 class="sf_file"/>
