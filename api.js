@@ -12,7 +12,7 @@ const sequelize = new Sequelize('Crackito', 'root', 'crackito2022',{
 });
 
 // INIT SEQUELIZE
-sequelize.sync({force: true})
+sequelize.sync()
 
 const File = sequelize.define(
     'File', {
