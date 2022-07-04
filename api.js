@@ -91,7 +91,7 @@ async function dlFiles(req, res) {
         const path_dl = file[0].dataValues.path
         const fileName_dl = file[0].dataValues.path.split('ito/').pop().split('.encr')[0]+'.encr'
         let file = await File.findAll({
-            where: ref = ref,
+            where: ref,
         })
         fs.readFile(path_dl, 'utf8', (err, data) => {
             if(err) {
