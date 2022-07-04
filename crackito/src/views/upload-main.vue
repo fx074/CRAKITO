@@ -34,7 +34,6 @@
           </div>
         </div>
         <p>{{response_p}}</p>
-        <a href="http://crypto-carousel.com:3000/download/file/1222">aze</a>
       </div>
     </div>
   </div>
