@@ -1,4 +1,5 @@
 const express = require('express')
+const fs = require('fs');
 const multer = require('multer')
 const path = require('path')
 const { Sequelize } = require('sequelize');
@@ -70,13 +71,46 @@ app.post('/upload', upload.any(), uploadFiles);
 
 app.get('/download/file/:ref', dlFiles);
 
-function dlFiles(req, res) {
-    console.log(req.params.ref)
-    res.json(
-    {
-        file: "file",
-        filename: "test.test",
+async function dlFiles(req, res) {
+    let ref = 315830186
+    let exists = await File.findAll({
+        attributes: ['ref'],
+        where: ref = ref,
     })
+    if(!exists.length){
+        res.json(
+        {
+            file: null,
+            filename: null,
+            errorHandler: 10,
+            errorDesc: 'Aucun fichier à cette adresse'
+        })
+    } else {
+        const path_dl = file[0].dataValues.path
+        const fileName_dl = file[0].dataValues.path.split('ito/').pop().split('.encr')[0]+'.encr'
+        let file = await File.findAll({
+            where: ref = ref,
+        })
+        fs.readFile(path_dl, 'utf8', (err, data) => {
+            if(err) {
+                console.log(err)
+                res.json(
+                    {
+                        file: null,
+                        filename: null,
+                        errorHandler: 10,
+                        errorDesc: err,
+                    })
+            } 
+            res.json(
+                {
+                    file: data,
+                    filename: fileName_dl,
+                    errorHandler: 9,
+                    errorDesc: null,
+                })
+        })
+    }
 }
 
 function uploadFiles(req, res) {
