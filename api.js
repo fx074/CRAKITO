@@ -75,7 +75,9 @@ async function dlFiles(req, res) {
     let ref = req.params.ref
     let exists = await File.findAll({
         attributes: ['ref'],
-        where: ref = ref,
+        where: {
+            ref: ref,
+        },
     })
     if(!exists.length){
         res.send("coucou")
