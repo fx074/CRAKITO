@@ -1,10 +1,9 @@
 const express = require('express')
 const multer = require('multer')
-const path = require('path')
-const { Sequelize } = require('sequelize');
-const bodyParser = require('body-parser');
-var cors = require('cors');
-const { randomInt } = require('crypto');
+const cors = require('cors')
+const bodyParser = require('body-parser')
+const { Sequelize } = require('sequelize')
+const { randomInt } = require('crypto')
 
 const sequelize = new Sequelize('Crackito', 'root', 'crackito2022',{
     host: 'localhost',
@@ -76,8 +75,8 @@ function uploadFiles(req, res) {
     })
 }
 
-function insertDB(filename){
-    File.create({ref: g_ref, path: '/bdd_crackito/'+filename})
+async function insertDB(filename){
+    await File.create({ref: g_ref, path: '/bdd_crackito/'+filename})
 }
 
 async function createUniqueRef(){
