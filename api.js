@@ -1,4 +1,5 @@
 const express = require('express')
+const fs = require('fs');
 const multer = require('multer')
 const cors = require('cors')
 const bodyParser = require('body-parser')
@@ -66,6 +67,61 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage })
 
 app.post('/upload', upload.any(), uploadFiles);
+
+app.get('/download/file/:ref', dlFiles);
+
+async function dlFiles(req, res) {
+    let ref = req.params.ref
+
+    // OPTIMISATION POSSIBLE AVEC LES 2 REQUETES 
+
+    let exists = await File.findAll({
+        attributes: ['ref'],
+        where: {
+            ref: ref,
+        },
+    })
+    if(!exists.length){
+        res.json(
+        {
+            file: null,
+            filename: null,
+            errorHandler: 10,
+            errorDesc: 'Aucun fichier à cette adresse'
+        })
+    } else {
+        let file = await File.findAll({
+            where: {
+                ref: ref,
+            },
+        })
+
+        const path_dl = file[0].dataValues.path
+        const fileName_dl = file[0].dataValues.path.split('ito/').pop().split('.encr')[0]+'.encr'
+
+        fs.readFile(path_dl, 'utf8', (err, data) => {
+            if(err) {
+                console.log(err)
+                res.json(
+                    {
+                        file: null,
+                        filename: null,
+                        errorHandler: 10,
+                        errorDesc: err,
+                    }
+                )
+            } 
+            res.json(
+                {
+                    file: data,
+                    filename: fileName_dl,
+                    errorHandler: 9,
+                    errorDesc: null,
+                }
+            )
+        })
+    }
+}
 
 function uploadFiles(req, res) {
     res.json(
