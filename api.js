@@ -72,7 +72,7 @@ app.post('/upload', upload.any(), uploadFiles);
 app.get('/download/file/:ref', dlFiles);
 
 async function dlFiles(req, res) {
-    let ref = 315830186
+    let ref = req.params.ref
     let exists = await File.findAll({
         attributes: ['ref'],
         where: ref = ref,
