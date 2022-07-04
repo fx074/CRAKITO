@@ -28,7 +28,7 @@
             </label>
           </div>
           <button v-on:click="receiveForm()" class="send_btn">Chercher</button>
-          <a href="" ref="link_dl" class="send_btn">Download !</a>
+          <a href="" ref="link_dl" class="send_btn" style="visibility: hidden;">Download !</a>
         </div>
       </div>
     </div>
@@ -41,32 +41,33 @@
 
 <script>
 import axios from 'axios';
+import CryptoJS from 'crypto-js';
 
 export default {
   methods: {
     receiveForm() {
-      // 1175893768ca8796609f12b9e4392f916fd11e752d0a9ccb687b9ffe40f46c046a87621b2742
-      console.log(this.$refs.code.value);
+      // VALEUR TEST : 1539092347ca8fae31a6264e391c804c4d4f98d4dd58bbb5f4906c7933c0dd6a1a427067208d
       const code = this.$refs.code.value.toString();
       const ref = code.substring(0, code.length - 66);
       const key = code.substring(code.length - 64, code.length);
       // eslint-disable-next-line
       axios.get('http://crypto-carousel.com:3000/download/file/' + ref)
         .then((res) => {
-          console.log(res);
+          const decipher = CryptoJS.AES.decrypt(
+            res.data.file,
+            CryptoJS.enc.Utf8.parse(key),
+            { mode: CryptoJS.mode.ECB },
+          ).toString(CryptoJS.enc.Utf8);
+
+          this.$refs.link_dl.setAttribute('href', decipher);
+          this.$refs.link_dl.setAttribute('download', res.data.filename.replace('.encr', ''));
+          this.$refs.link_dl.setAttribute('style', 'visibility: show;');
         })
         .catch((err) => {
           console.log(err);
           this.response_p = 'Il y a une erreur';
         });
-      console.log(ref);
-      console.log(key);
     },
-  },
-  data() {
-    return {
-      ref: null,
-    };
   },
 };
 </script>
