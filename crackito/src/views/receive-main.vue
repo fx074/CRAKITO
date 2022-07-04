@@ -54,7 +54,7 @@ export default {
       // eslint-disable-next-line
       axios.get('http://crypto-carousel.com:3000/download/file/' + ref)
         .then((res) => {
-          if(res.data.errorHandler == 9) {
+          if (res.data.errorHandler === 9) {
             const decipher = CryptoJS.AES.decrypt(
               res.data.file,
               CryptoJS.enc.Utf8.parse(key),
@@ -65,8 +65,8 @@ export default {
             this.$refs.link_dl.setAttribute('download', res.data.filename.replace('.encr', ''));
             this.$refs.link_dl.setAttribute('style', 'visibility: show;');
             this.response_p = 'Fichier disponible !!';
-          } else if (res.data.errorHandler == 10) {
-            this.response_p = errorDesc;
+          } else if (res.data.errorHandler === 10) {
+            this.response_p = res.data.errorDesc;
           }
         })
         .catch((err) => {
