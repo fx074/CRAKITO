@@ -17,7 +17,7 @@ sequelize.sync({force: true})
 const File = sequelize.define(
     'File', {
         ref: {
-            type: Sequelize.INTEGER(15),
+            type: Sequelize.INTEGER.UNSIGNED,
             primaryKey: true,
         },
         path: {
@@ -32,7 +32,7 @@ const File = sequelize.define(
 const F_Key = sequelize.define(
     'F_Key', {
         ref: {
-            type: Sequelize.INTEGER(15),
+            type: Sequelize.INTEGER.UNSIGNED,
             references: {
                 model: File,
                 key: 'ref'
