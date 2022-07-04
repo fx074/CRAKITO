@@ -17,7 +17,7 @@ sequelize.sync()
 const File = sequelize.define(
     'File', {
         ref: {
-            type: Sequelize.INTEGER(10),
+            type: Sequelize.INTEGER(15),
             primaryKey: true,
         },
         path: {
