@@ -74,13 +74,16 @@ async function dlFiles(req, res) {
     let ref = req.params.ref
 
     // OPTIMISATION POSSIBLE AVEC LES 2 REQUETES 
-
-    let exists = await File.findAll({
-        attributes: ['ref'],
-        where: {
-            ref: ref,
-        },
-    })
+    try{
+        let exists = await File.findAll({
+            attributes: ['ref'],
+            where: {
+                ref: ref,
+            },
+        })
+    } catch(err) {
+        console.log(err)
+    }
     if(!exists.length){
         res.json(
         {
@@ -90,11 +93,15 @@ async function dlFiles(req, res) {
             errorDesc: 'Aucun fichier à cette adresse'
         })
     } else {
-        let file = await File.findAll({
-            where: {
-                ref: ref,
-            },
-        })
+        try{
+            let file = await File.findAll({
+                where: {
+                    ref: ref,
+                },
+            })
+        } catch(err) {
+            console.log(err)
+        }
 
         const path_dl = file[0].dataValues.path
         const fileName_dl = file[0].dataValues.path.split('ito/').pop().split('.encr')[0]+'.encr'
@@ -132,17 +139,25 @@ function uploadFiles(req, res) {
 }
 
 async function insertDB(filename){
-    await File.create({ref: g_ref, path: '/bdd_crackito/'+filename})
+    try{
+        await File.create({ref: g_ref, path: '/bdd_crackito/'+filename})
+    } catch(err) {
+        console.log(err)
+    }
 }
 
 async function createUniqueRef(){
     let exists = 1
     do{
         g_ref = randomInt(2**32)
-        exists = await File.findAll({
-            attributes: ['ref'],
-            where: ref = g_ref,
-        })
+        try {
+            exists = await File.findAll({
+                attributes: ['ref'],
+                where: ref = g_ref,
+            })
+        } catch(err) {
+            console.log(err)
+        }
     }while(!exists)
 }
 
