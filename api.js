@@ -73,6 +73,9 @@ app.get('/download/file/:ref', dlFiles);
 
 async function dlFiles(req, res) {
     let ref = req.params.ref
+
+    // OPTIMISATION POSSIBLE AVEC LES 2 REQUETES 
+
     let exists = await File.findAll({
         attributes: ['ref'],
         where: {
@@ -89,14 +92,15 @@ async function dlFiles(req, res) {
             errorDesc: 'Aucun fichier à cette adresse'
         })
     } else {
-        res.send("TEST")
-        const path_dl = file[0].dataValues.path
-        const fileName_dl = file[0].dataValues.path.split('ito/').pop().split('.encr')[0]+'.encr'
         let file = await File.findAll({
             where: {
                 ref: ref,
             },
         })
+
+        const path_dl = file[0].dataValues.path
+        const fileName_dl = file[0].dataValues.path.split('ito/').pop().split('.encr')[0]+'.encr'
+
         fs.readFile(path_dl, 'utf8', (err, data) => {
             if(err) {
                 console.log(err)
