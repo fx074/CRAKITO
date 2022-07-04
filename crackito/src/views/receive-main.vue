@@ -54,6 +54,7 @@ export default {
       // eslint-disable-next-line
       axios.get('http://crypto-carousel.com:3000/download/file/' + ref)
         .then((res) => {
+          console.log(res);
           if (res.data.errorHandler === 9) {
             const decipher = CryptoJS.AES.decrypt(
               res.data.file,
@@ -74,6 +75,11 @@ export default {
           this.response_p = 'Il y a une erreur, le fichier n\'existe pas';
         });
     },
+  },
+  data() {
+    return {
+      response_p: null,
+    };
   },
 };
 </script>
