@@ -29,7 +29,7 @@
                 class="sf_file"/>
               </div>
             </label>
-            <button v-on:click="submitForm()">Upload</button>
+            <button v-on:click="submitForm()"  class="send_btn">Upload</button>
             <span id="status"></span>
           </div>
         </div>
