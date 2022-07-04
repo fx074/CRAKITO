@@ -72,10 +72,11 @@ app.get('/download/file/:ref', dlFiles);
 
 async function dlFiles(req, res) {
     let ref = req.params.ref
+    let exists = 0
 
     // OPTIMISATION POSSIBLE AVEC LES 2 REQUETES 
     try{
-        let exists = await File.findAll({
+        exists = await File.findAll({
             attributes: ['ref'],
             where: {
                 ref: ref,
@@ -93,14 +94,23 @@ async function dlFiles(req, res) {
             errorDesc: 'Aucun fichier à cette adresse'
         })
     } else {
+        let file = null
         try{
-            let file = await File.findAll({
+            file = await File.findAll({
                 where: {
                     ref: ref,
                 },
             })
         } catch(err) {
             console.log(err)
+            res.json(
+                {
+                    file: null,
+                    filename: null,
+                    errorHandler: 10,
+                    errorDesc: err,
+                }
+            )
         }
 
         const path_dl = file[0].dataValues.path
@@ -140,7 +150,7 @@ function uploadFiles(req, res) {
 
 async function insertDB(filename){
     try{
-        await File.create({ref: g_ref, path: '/bdd_crackito/'+filename})
+        await File.create({ref: g_ref, path: '/bdd_crackito/' + filename})
     } catch(err) {
         console.log(err)
     }
