@@ -67,7 +67,7 @@ export default {
             this.$refs.link_dl.setAttribute('href', decipher);
             this.$refs.link_dl.setAttribute('download', res.data.filename.replace('.encr', ''));
             this.$refs.link_dl.setAttribute('style', 'visibility: show;');
-            this.response_p = 'Fichier disponible !!';
+            this.response_p = 'Fichier disponible !';
           } else if (res.data.errorHandler === 10) {
             this.response_p = res.data.errorDesc;
           }
