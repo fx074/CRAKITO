@@ -8,8 +8,8 @@
                 </div>
                 <div class="m_right">
                     <nav>
-                      <router-link to="/" class="nav_prim">Accueil </router-link>
-                      <router-link to="/upload" class="nav_link">Envoyer un fichier </router-link>
+                      <router-link to="/" class="nav_prim">Accueil</router-link>
+                      <router-link to="/upload" class="nav_link">Envoyer un fichier</router-link>
                       <router-link to="/receive" class="nav_prim">Récupérer un fichier</router-link>
                     </nav>
                     <router-view />
@@ -20,7 +20,7 @@
     <div class="container_sf">
       <div class="send_file">
         <p class="sf_title">Envoyer un fichier</p>
-        <p class="sf_des">La façon la plus simple et sécurisé d'envoyer vos fichiers</p>
+        <p class="sf_des">La façon la plus simple et sécurisée d'envoyer vos fichiers</p>
         <div class="sf_contour">
           <div class="sf_form">
             <label>
@@ -29,7 +29,7 @@
                 class="sf_file"/>
               </div>
             </label>
-            <button v-on:click="submitForm()"  class="send_btn">Upload</button>
+            <button v-on:click="submitForm()"  class="send_btn">Envoyer</button>
             <span id="status"></span>
           </div>
         </div>

@@ -8,8 +8,8 @@
                 </div>
                 <div class="m_right">
                     <nav>
-                      <router-link to="/" class="nav_prim">Accueil </router-link>
-                      <router-link to="/upload" class="nav_prim">Envoyer un fichier </router-link>
+                      <router-link to="/" class="nav_prim">Accueil</router-link>
+                      <router-link to="/upload" class="nav_prim">Envoyer un fichier</router-link>
                       <router-link to="/receive" class="nav_link">Récupérer un fichier</router-link>
                     </nav>
                     <router-view/>
@@ -20,7 +20,7 @@
     <div class="container_sf">
       <div class="send_file">
         <p class="sf_title">Récupérer un fichier</p>
-        <p class="sf_des">Un façon simple et sécurisé de partager et récupérer vos fichiers</p>
+        <p class="sf_des">La façon la plus simple et sécurisée d'envoyer vos fichiers</p>
         <div class="sf_contour">
           <div class="sf_form">
             <div class="search-wrapper">
@@ -32,7 +32,7 @@
           </div>
         </div>
         <p class="sf_status">{{response_p}}</p>
-        <a href="" ref="link_dl" class="send_btn" style="visibility: hidden;">Download !</a>
+        <a href="" ref="link_dl" class="send_btn" style="visibility: hidden;">Télécharger !</a>
         </div>
       </div>
   </div>
