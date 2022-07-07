@@ -25,9 +25,9 @@
         <div class="cover">
           <div class="cover_text">
             <h1>Crackito</h1>
-            <h2>Partagez vos fichiers en toutes sécurité</h2>
-            <p>Envoyez rapidement tout type de fichier de manière 100% sécurisée.
-              Tout en respectant l'anonymat et la confidentialités des données !</p>
+            <h2>Partagez vos fichiers en toute sécurité</h2>
+            <p>Envoyez rapidement tous type de fichiers de manière 100% sécurisée.
+              Tout en respectant l'anonymat et la confidentialité des données !</p>
             <router-link to="/upload" class="cover_link">Envoyer un fichier</router-link>
             </div>
             <div class="cover_img">
